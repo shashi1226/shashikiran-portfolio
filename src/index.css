@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+/* =================================
+   THEME VARIABLES
+================================= */
+
+:root {
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-soft: #111111;
+  --text: #ffffff;
+  --text-secondary: #a3a3a3;
+  --text-muted: #525252;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --accent: #a3ff00;
+  --accent-rgb: 163, 255, 0;
+}
+
+/* LIGHT MODE */
+
+html.light {
+  --bg: #f5f5f2;
+  --surface: #ffffff;
+  --surface-soft: #eeeeeb;
+  --text: #111111;
+  --text-secondary: #525252;
+  --text-muted: #737373;
+  --border: rgba(0, 0, 0, 0.1);
+  --border-strong: rgba(0, 0, 0, 0.2);
+  --accent: #78bd00;
+  --accent-rgb: 120, 189, 0;
+}
+
+
+/* =================================
+   BASE
+================================= */
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition:
+    background-color 500ms ease,
+    color 500ms ease;
+}
+
+
+/* =================================
+   SELECTION
+================================= */
+
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+
+/* =================================
+   SCROLLBAR
+================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+
+/* =================================
+   PAGE LOAD
+================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1.2s ease-out forwards;
+}
+
+
+/* =================================
+   SOFT FADE
+================================= */
+
+@keyframes softFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-soft-fade {
+  animation: softFade 1s ease-out forwards;
+}
+
+
+/* =================================
+   SLIDE FROM LEFT
+================================= */
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  opacity: 0;
+  animation: slideLeft 1s ease-out forwards;
+}
+
+
+/* =================================
+   SLIDE FROM RIGHT
+================================= */
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-right {
+  opacity: 0;
+  animation: slideRight 1s ease-out forwards;
+}
+
+
+/* =================================
+   SCALE REVEAL
+================================= */
+
+@keyframes scaleReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-reveal {
+  opacity: 0;
+  animation: scaleReveal 1s ease-out forwards;
+}
+
+
+/* =================================
+   GLOW PULSE
+================================= */
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+.animate-glow {
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+
+/* =================================
+   FLOAT
+================================= */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+
+/* =================================
+   LIME LINE
+================================= */
+
+@keyframes lineReveal {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.animate-line {
+  animation: lineReveal 1s ease-out forwards;
+}
+
+
+/* =================================
+   BLINKING CURSOR
+================================= */
+
+@keyframes cursorBlink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-cursor {
+  animation: cursorBlink 1s steps(1) infinite;
+}
+
+
+/* =================================
+   HOVER LIFT
+================================= */
+
+.hover-lift {
+  transition:
+    transform 400ms ease,
+    border-color 400ms ease,
+    box-shadow 400ms ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+}
+
+
+/* =================================
+   THEME TRANSITION
+================================= */
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 500ms ease,
+    border-color 500ms ease,
+    color 500ms ease,
+    fill 500ms ease,
+    stroke 500ms ease,
+    box-shadow 500ms ease;
+}
+
+
+/* =================================
+   REDUCED MOTION
+================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
