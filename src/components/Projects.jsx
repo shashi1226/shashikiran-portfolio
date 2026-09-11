@@ -46,18 +46,6 @@ const projects = [
     inDevelopment: true,
   },
 
-  {
-    number: "04",
-    title: "Chatbot",
-    category: "NEXT.JS APPLICATION",
-    description:
-      "A chatbot application built using Next.js, focused on creating an interactive conversational interface and exploring modern frontend development.",
-    tech: ["Next.js", "React", "JavaScript", "API"],
-    image: "/images/projects/react-projects.png",
-    featured: false,
-    live: "https://github.com/shashi1226/chatbot",
-    github: "https://github.com/shashi1226/chatbot",
-  },
 ];
 
 function Projects() {
