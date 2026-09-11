@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 
@@ -15,6 +14,7 @@ const projects = [
     live: "https://workconsole.vercel.app",
     github: "https://github.com/shashi1226/workconsole",
   },
+
   {
     number: "02",
     title: "Sign Language Detection",
@@ -27,8 +27,27 @@ const projects = [
     live: "https://elysian01.github.io/Sign-Language-Translator/",
     github: "https://github.com/shashi1226/Sign-Language-Translator",
   },
+
   {
     number: "03",
+    title: "Shashin",
+    category: "PHOTOGRAPHY & AI PLATFORM",
+    description:
+      "A photography learning and analysis platform I am currently building to help photographers understand their images, improve their skills, and learn through practical feedback.",
+    tech: [
+      "React",
+      "AI",
+      "Computer Vision",
+      "Image Analysis",
+      "Photography",
+    ],
+    image: "/images/projects/shashin.png",
+    featured: false,
+    inDevelopment: true,
+  },
+
+  {
+    number: "04",
     title: "Chatbot",
     category: "NEXT.JS APPLICATION",
     description:
@@ -76,7 +95,6 @@ function Projects() {
 
         <ScrollReveal>
           <div className="mb-16 flex items-center gap-4">
-
             <span className="font-mono text-sm text-lime-500">
               03 /
             </span>
@@ -90,7 +108,6 @@ function Projects() {
             >
               SELECTED WORK
             </h2>
-
           </div>
         </ScrollReveal>
 
@@ -99,7 +116,6 @@ function Projects() {
 
         <ScrollReveal delay={100}>
           <div className="mb-20 max-w-4xl">
-
             <h3
               className={`text-5xl font-bold leading-[0.95] tracking-tight transition-colors duration-500 sm:text-6xl lg:text-7xl ${
                 lightMode
@@ -124,7 +140,6 @@ function Projects() {
 
               BUILT.
             </h3>
-
           </div>
         </ScrollReveal>
 
@@ -154,6 +169,13 @@ function Projects() {
                 )}
 
 
+                {/* DEVELOPMENT ACCENT */}
+
+                {project.inDevelopment && (
+                  <div className="absolute left-0 top-0 z-30 h-full w-[2px] bg-lime-400 opacity-100" />
+                )}
+
+
                 {/* IMAGE PREVIEW */}
 
                 <div
@@ -170,6 +192,9 @@ function Projects() {
                     className="h-full w-full object-contain p-4 transition-all duration-700 ease-out group-hover/preview:scale-[1.035] md:p-6"
                   />
 
+
+                  {/* IMAGE GLOW */}
+
                   <div
                     className={`pointer-events-none absolute -inset-20 opacity-0 blur-3xl transition-opacity duration-700 group-hover/preview:opacity-100 ${
                       lightMode
@@ -177,6 +202,9 @@ function Projects() {
                         : "bg-lime-400/[0.03]"
                     }`}
                   />
+
+
+                  {/* IMAGE OVERLAY */}
 
                   <div
                     className={`pointer-events-none absolute inset-0 transition-all duration-700 ${
@@ -186,6 +214,9 @@ function Projects() {
                     }`}
                   />
 
+
+                  {/* BOTTOM GRADIENT */}
+
                   <div
                     className={`pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent opacity-0 transition-opacity duration-500 group-hover/preview:opacity-100 ${
                       lightMode
@@ -193,6 +224,9 @@ function Projects() {
                         : "from-black/60"
                     }`}
                   />
+
+
+                  {/* PROJECT NUMBER */}
 
                   <span
                     className={`absolute bottom-5 left-6 z-10 font-mono text-xs tracking-[0.3em] transition-all duration-500 group-hover/preview:translate-x-1 group-hover/preview:text-lime-500 ${
@@ -204,15 +238,24 @@ function Projects() {
                     PROJECT {project.number}
                   </span>
 
-                  <span
-                    className={`absolute right-6 top-6 z-10 font-mono text-sm transition-all duration-500 group-hover/preview:translate-x-1 group-hover/preview:-translate-y-1 group-hover/preview:text-lime-500 ${
-                      lightMode
-                        ? "text-black/40"
-                        : "text-white/40"
-                    }`}
-                  >
-                    ↗
-                  </span>
+
+                  {/* DEVELOPMENT STATUS */}
+
+                  {project.inDevelopment ? (
+                    <span className="absolute right-6 top-6 z-10 border border-lime-500/40 bg-black/70 px-3 py-2 font-mono text-xs tracking-[0.15em] text-lime-400 backdrop-blur-sm">
+                      IN DEVELOPMENT
+                    </span>
+                  ) : (
+                    <span
+                      className={`absolute right-6 top-6 z-10 font-mono text-sm transition-all duration-500 group-hover/preview:translate-x-1 group-hover/preview:-translate-y-1 group-hover/preview:text-lime-500 ${
+                        lightMode
+                          ? "text-black/40"
+                          : "text-white/40"
+                      }`}
+                    >
+                      ↗
+                    </span>
+                  )}
 
                 </div>
 
@@ -246,6 +289,7 @@ function Projects() {
                         {project.category}
                       </p>
 
+
                       <h4
                         className={`text-3xl font-bold tracking-tight transition-all duration-500 group-hover:translate-x-1 md:text-4xl ${
                           lightMode
@@ -255,6 +299,7 @@ function Projects() {
                       >
                         {project.title}
                       </h4>
+
 
                       <p
                         className={`mt-6 max-w-xl text-base leading-7 transition-colors duration-500 ${
@@ -272,6 +317,8 @@ function Projects() {
                     {/* TECHNOLOGIES + LINKS */}
 
                     <div className="flex flex-col justify-between">
+
+                      {/* TECHNOLOGIES */}
 
                       <div className="flex flex-wrap gap-2">
 
@@ -295,38 +342,51 @@ function Projects() {
 
                       <div className="mt-10 flex flex-wrap gap-6">
 
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`group/link inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300 hover:text-lime-500 ${
-                            lightMode
-                              ? "text-black"
-                              : "text-white"
-                          }`}
-                        >
-                          VIEW PROJECT
+                        {project.inDevelopment ? (
 
-                          <span className="transition-all duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1">
-                            ↗
+                          <span className="inline-flex items-center gap-2 text-sm font-medium text-lime-500">
+                            CURRENTLY BUILDING
+                            <span className="animate-pulse">
+                              ●
+                            </span>
                           </span>
 
-                        </a>
+                        ) : (
+
+                          <>
+                            <a
+                              href={project.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`group/link inline-flex items-center gap-2 text-sm font-medium transition-colors duration-300 hover:text-lime-500 ${
+                                lightMode
+                                  ? "text-black"
+                                  : "text-white"
+                              }`}
+                            >
+                              VIEW PROJECT
+
+                              <span className="transition-all duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1">
+                                ↗
+                              </span>
+                            </a>
 
 
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group/link inline-flex items-center gap-2 text-sm font-medium text-neutral-500 transition-colors duration-300 hover:text-lime-500"
-                        >
-                          SOURCE CODE
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group/link inline-flex items-center gap-2 text-sm font-medium text-neutral-500 transition-colors duration-300 hover:text-lime-500"
+                            >
+                              SOURCE CODE
 
-                          <span className="transition-all duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1">
-                            ↗
-                          </span>
+                              <span className="transition-all duration-300 group-hover/link:translate-x-1 group-hover/link:-translate-y-1">
+                                ↗
+                              </span>
+                            </a>
+                          </>
 
-                        </a>
+                        )}
 
                       </div>
 
@@ -347,6 +407,23 @@ function Projects() {
                     >
                       <span className="font-mono text-xs tracking-[0.15em] text-lime-500">
                         ★ FEATURED PROJECT
+                      </span>
+                    </div>
+                  )}
+
+
+                  {/* IN DEVELOPMENT */}
+
+                  {project.inDevelopment && (
+                    <div
+                      className={`mt-8 border-t pt-5 ${
+                        lightMode
+                          ? "border-black/10"
+                          : "border-white/10"
+                      }`}
+                    >
+                      <span className="font-mono text-xs tracking-[0.15em] text-lime-500">
+                        ● CURRENTLY IN DEVELOPMENT
                       </span>
                     </div>
                   )}
